@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="ElegirPremio.aspx" />
     <Content Include="IngresarDatos.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -78,6 +79,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ElegirPremio.aspx.cs">
+      <DependentUpon>ElegirPremio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ElegirPremio.aspx.designer.cs">
+      <DependentUpon>ElegirPremio.aspx</DependentUpon>
     </Compile>
     <Compile Include="IngresarDatos.aspx.cs">
       <DependentUpon>IngresarDatos.aspx</DependentUpon>
