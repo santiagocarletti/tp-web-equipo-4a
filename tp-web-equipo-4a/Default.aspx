@@ -14,11 +14,11 @@
 
         <form id="form1" runat="server">
             <div class="mb-3">
-                <asp:Label ID="lblCodigoVoucher" runat="server" Text="Label" class="form-label">¡Ingresá el código del voucher!</asp:Label>
-                <asp:TextBox ID="txtCodigoVoucher" runat="server" class="form-control"></asp:TextBox>
-                <asp:Label ID="lblTextoCodigoVoucher" runat="server" Text="Label" class="form-text">Completá el campo con el código alfanumérico</asp:Label>
+                <asp:Label ID="lblCodigoVoucher" runat="server" Text="Label" CssClass="form-label">¡Ingresá el código del voucher!</asp:Label>
+                <asp:TextBox ID="txtCodigoVoucher" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:Label ID="lblTextoCodigoVoucher" runat="server" Text="Label" CssClass="form-text">Completá el campo con el código alfanumérico</asp:Label>
              </div>
-            <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" class="btn btn-primary mb-3" />
+            <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente"  CssClass="btn btn-primary mb-3" />
         </form>
 
     </div>
