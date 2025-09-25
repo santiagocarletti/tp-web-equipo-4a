@@ -20,7 +20,7 @@ namespace negocio
         }
         public AccesoBD()
         {
-            conexionbd = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
+            conexionbd = new SqlConnection("server=.\\SQLEXPRESS; database=PROMOS_DB; integrated security=true");
             comando = new SqlCommand();
         }
         public void setearConsulta(string consulta)
