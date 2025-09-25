@@ -10,15 +10,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
 <body>
+    <header class="bg-dark py-3 mb-4">
+        <h3 class="text-light m-0">Promo Ganá!</h3>
+    </header>
     <div class="mb-3">
-
         <form id="form1" runat="server">
             <div class="mb-3">
                 <asp:Label ID="lblCodigoVoucher" runat="server" Text="Label" CssClass="form-label">¡Ingresá el código del voucher!</asp:Label>
                 <asp:TextBox ID="txtCodigoVoucher" runat="server" CssClass="form-control"></asp:TextBox>
                 <asp:Label ID="lblTextoCodigoVoucher" runat="server" Text="Label" CssClass="form-text">Completá el campo con el código alfanumérico</asp:Label>
              </div>
-            <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente"  CssClass="btn btn-primary mb-3" />
+            <%--<asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" CssClass="btn btn-primary mb-3"/>--%>
+            <a href="ElegirPremio.aspx" class="btn btn-primary mb-3">Siguiente</a>
         </form>
 
     </div>
