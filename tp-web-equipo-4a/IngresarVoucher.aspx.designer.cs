@@ -11,7 +11,7 @@ namespace tp_web_equipo_4a
 {
 
 
-    public partial class Default
+    public partial class IngresarVoucher
     {
 
         /// <summary>
@@ -24,30 +24,30 @@ namespace tp_web_equipo_4a
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Control lblCodigoVoucher.
+        /// Control voucherInput.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCodigoVoucher;
+        protected global::System.Web.UI.WebControls.TextBox voucherInput;
 
         /// <summary>
-        /// Control txtCodigoVoucher.
+        /// Control btnSiguiente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCodigoVoucher;
+        protected global::System.Web.UI.WebControls.Button btnSiguiente;
 
         /// <summary>
-        /// Control lblTextoCodigoVoucher.
+        /// Control lblMessage.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTextoCodigoVoucher;
+        protected global::System.Web.UI.WebControls.Label lblMessage;
     }
 }
