@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="IngresarDatos.aspx.cs" Inherits="tp_web_equipo_4a.IngresarDatos" %>
+﻿<%--<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="IngresarDatos.aspx.cs" Inherits="tp_web_equipo_4a.IngresarDatos" %>--%>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="IngresarDatos.aspx.cs" Inherits="tp_web_equipo_4a.IngresarDatos" UnobtrusiveValidationMode="None" %>
 
 <!DOCTYPE html>
 
@@ -6,53 +7,176 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>¡Promo Ganá! - Ingresá tus datos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
+
+<script>
+    function validarCheckbox() {
+        var checkbox = document.getElementById('checkbox');
+        var errorSpan = document.getElementById('checkboxError');
+
+        if (!checkbox.checked) {
+            errorSpan.style.display = 'inline';
+            return false;
+        }
+        errorSpan.style.display = 'none';
+        return true;
+    }
+</script>
+
 <body>
-    <form id="form1" runat="server">
-        <div>
+        <form id="form1" runat="server">
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Promo Ganá!</span>
+            </div>
+        </nav>
 
-            <asp:Label ID="lblTitulo" runat="server" Text="Ingresá tus datos"></asp:Label>            
-            
-            <!-- Datos persolanles -->            
-            <div ID="frmDNI">
-                <asp:Label ID="lblDNI" runat="server" Text="DNI"></asp:Label>
-                <asp:TextBox ID="txtDNI" runat="server"></asp:TextBox>
-            </div>         
-            <div ID="frmNombre">
-                <asp:Label ID="lblNombre" runat="server" Text="Nombre"></asp:Label>
-                <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
-            </div>
-            <div ID="frmApellido">
-                <asp:Label ID="lblApellido" runat="server" Text="Apellido"></asp:Label>
-                <asp:TextBox ID="txtApellido" runat="server"></asp:TextBox>
-            </div>
-            <div ID="frmEmail">
-                <asp:Label ID="lblEmail" runat="server" Text="Email"></asp:Label>
-                <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
-            </div>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2 id="aspnetTitle" class="mb-4">Ingresar Datos:</h2>
 
-            <!-- Dirección -->            
-            <div ID="frmDireccion">
-                <asp:Label ID="lblDireccion" runat="server" Text="Dirección"></asp:Label>
-                <asp:TextBox ID="txtDireccion" runat="server"></asp:TextBox>
-            </div>
-            <div ID="frmCiudad">
-                <asp:Label ID="lblCiudad" runat="server" Text="Ciudad"></asp:Label>
-                <asp:TextBox ID="txtCiudad" runat="server"></asp:TextBox>
-            </div>
-            <div ID="frmCP">
-                <asp:Label ID="lblCP" runat="server" Text="CP"></asp:Label>
-                <asp:TextBox ID="txtCP" runat="server"></asp:TextBox>
-            </div>
+                    <div class="mb-3 row">
+                        <div class="col-md-8">
+                            <label for="txtDNI" class="form-label">DNI</label>
+                            <asp:RequiredFieldValidator 
+                                ControlToValidate="txtDNI"
+                                ErrorMessage="El DNI no puede estar en blanco"
+                                runat="server"
+                                ForeColor="Red"
+                                Display="Dynamic"
+                                ValidationGroup="GrupoDNI"/>
 
-            <div>
-                <input id="ckbTerminosCondiciones" type="checkbox" />
-                <asp:Label ID="lblTerminosCondiciones" runat="server" Text="Acepto los términos y condiciones"></asp:Label>
+                            <asp:RegularExpressionValidator
+                                ControlToValidate="txtDNI"
+                                ErrorMessage=" Campo Inválido"
+                                runat="server"
+                                ValidationExpression="^[0-9.]+$"
+                                ForeColor="Red"
+                                Display="Dynamic"
+                                ValidationGroup="GrupoDNI"/>
+                            <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control" placeholder="DNI" type="text" required="1"/>
+                        </div>
+                        <div class="col-md-4 d-flex align-items-end">
+                            <asp:Button 
+                                ID="btnBuscarDNI" 
+                                runat="server" 
+                                Text="Continuar" 
+                                CssClass="btn btn-outline-primary w-100" 
+                                style="height: 38px; margin-top: 8px;" 
+                                ValidationGroup="GrupoDNI"
+                                OnClick="btnBuscarDni_Click"
+                                OnClientClick="this.form.noValidate = true;" 
+                                />
+                        </div>
+                    </div>
+<%
+    if (dni)
+    {%>
+                    <div class="mb-3">
+                        <label for="txtNombre" class="form-label">Nombre</label>
+                        <asp:RegularExpressionValidator
+                            ControlToValidate="txtNombre"
+                            ErrorMessage=" Campo Inválido (Solo letras, mínimo 3)"
+                            runat="server"
+                            ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,}$"
+                            ForeColor="Red"
+                            Display="Dynamic"
+                            ValidationGroup="registro" />
+                        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" placeholder="Juanito" required="1" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="txtApellido" class="form-label">Apellido</label>
+                        <asp:RegularExpressionValidator
+                            ControlToValidate="txtApellido"
+                            ErrorMessage=" Campo Inválido (Solo letras, mínimo 3)"
+                            runat="server"
+                            ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,}$"
+                            ForeColor="Red"
+                            Display="Dynamic"
+                            ValidationGroup="registro" />
+                        <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" placeholder="Argento" required="1" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="txtEmail" class="form-label">E-mail</label>
+                        <asp:RegularExpressionValidator
+                            ControlToValidate="txtEmail"
+                            ErrorMessage="Correo electrónico inválido"
+                            runat="server"
+                            ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                            ForeColor="red"
+                            Display="Dynamic"
+                            ValidationGroup="registro" />
+                        <div class="input-group">
+                            <div class="input-group-text">@</div>
+                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="email@email.com" required="1" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="txtDireccion" class="form-label">Dirección</label>
+                        <asp:RegularExpressionValidator
+                            ControlToValidate="txtDireccion"
+                            ErrorMessage="Dirección Inválida (Mínimo 3 caracteres)"
+                            runat="server"
+                            ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]{3,}$"
+                            ForeColor="red"
+                            Display="Dynamic"
+                            ValidationGroup="registro" />
+                        <div class="input-group">
+                            <div class="input-group-text">@</div>
+                            <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control" placeholder="Calle" required="1" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="txtCiudad" class="form-label">Ciudad</label>
+                        <asp:RegularExpressionValidator
+                            ControlToValidate="txtCiudad"
+                            ErrorMessage=" Campo Inválido (mínimo 3 caracteres)"
+                            runat="server"
+                            ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]{3,}$"
+                            ForeColor="Red"
+                            Display="Dynamic"
+                            ValidationGroup="registro" />
+                        <asp:TextBox ID="txtCiudad" runat="server" CssClass="form-control" placeholder="Ciudad" required="1" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="txtCp" class="form-label">Código Postal</label>
+                        <asp:RegularExpressionValidator
+                            ControlToValidate="txtCp"
+                            ErrorMessage=" Campo Inválido"
+                            runat="server"
+                            ValidationExpression="^[0-9]+$"
+                            ForeColor="Red"
+                            Display="Dynamic"
+                            ValidationGroup="registro"/>
+                        <asp:TextBox ID="txtCp" runat="server" CssClass="form-control" placeholder="Código Postal" required="1" />
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" id="checkbox" runat="server" class="form-check-input" />
+                        <label class="form-check-label" for="checkbox">Acepto los términos y condiciones.</label>
+                        <span id="checkboxError" class="text-danger" style="display: none;">¡Debes aceptar los términos y condiciones!</span>
+                    </div>
+
+                    <asp:Button
+                        ID="btnParticipar"
+                        runat="server"
+                        Text="Participar"
+                        CssClass="btn btn-primary w-100"
+                        OnClientClick="return validarCheckbox();"
+                        OnClick="btnParticipar_Click"
+                        CausesValidation="true" />
+                        <%}%>
+                </div>
             </div>
-
-            <asp:Button ID="btnParticipar" runat="server" Text="¡Participá!" />
-
         </div>
     </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
