@@ -9,7 +9,7 @@ using negocio;
 
 namespace tp_web_equipo_4a
 {
-    public partial class IngresarVoucher : System.Web.UI.Page
+    public partial class Default : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

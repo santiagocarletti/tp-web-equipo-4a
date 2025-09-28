@@ -11,7 +11,7 @@ namespace tp_web_equipo_4a
 {
 
 
-    public partial class IngresarVoucher
+    public partial class Default
     {
 
         /// <summary>

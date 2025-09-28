@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="IngresarVoucher.aspx.cs" Inherits="tp_web_equipo_4a.IngresarVoucher" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="tp_web_equipo_4a.Default" %>
 
 <!DOCTYPE html>
 
