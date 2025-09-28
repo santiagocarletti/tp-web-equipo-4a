@@ -11,7 +11,16 @@ namespace tp_web_equipo_4a
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                lblMensajeError.Text = "El código ingresado no es válido o ya ha sido utilizado.";
+            }
 
+        }
+
+        protected void btnInicio_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
         }
     }
 }
