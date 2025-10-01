@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CanjeoExitoso.aspx" />
     <Content Include="Contents\bootstrap-grid.css" />
     <Content Include="Contents\bootstrap-grid.min.css" />
     <Content Include="Contents\bootstrap-grid.rtl.css" />
@@ -96,6 +97,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CanjeoExitoso.aspx.cs">
+      <DependentUpon>CanjeoExitoso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CanjeoExitoso.aspx.designer.cs">
+      <DependentUpon>CanjeoExitoso.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ElegirPremio.aspx.cs">
       <DependentUpon>ElegirPremio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

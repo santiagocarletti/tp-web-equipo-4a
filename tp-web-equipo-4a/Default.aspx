@@ -11,27 +11,26 @@
 </head>
 <body>
     <form id="form1" runat="server">
+     
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Promo Ganá!</span>
+      </div>
+    </nav>
+    
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+         
+          <label for="voucherInput" class="form-label">Ingresá el código de tu voucher!</label>
+          <asp:TextBox ID="voucherInput" runat="server" CssClass="form-control"  placeholder="XXXXXXXXXXXXXXXXXX" />
+          
+        <asp:Button  ID="btnSiguiente"  runat="server"  Text="Siguiente" CssClass="btn btn-primary w-100 mt-3" OnClick="btnSiguiente_Click" />
 
-        <nav class="navbar navbar-dark bg-dark">
-            <div class="container-fluid">
-                <span class="navbar-brand mb-0 h1">Promo Ganá!</span>
-            </div>
-        </nav>
-
-        <div class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-
-                    <label for="voucherInput" class="form-label">Ingresá el código de tu voucher!</label>
-                    <asp:TextBox ID="voucherInput" runat="server" CssClass="form-control" placeholder="XXXXXXXXXXXXXXXXXX" />
-
-                    <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" CssClass="btn btn-primary w-100 mt-3" OnClick="btnSiguiente_Click" />
-
-                    <asp:Label ID="lblMessage" runat="server" CssClass="text-danger mt-2" />
-                </div>
-            </div>
+             <asp:Label   ID="lblMessage"  runat="server"  CssClass="text-danger mt-2" />
         </div>
-
+      </div>
+    </div>
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>

@@ -12,9 +12,15 @@ namespace tp_web_equipo_4a
     public partial class IngresarDatos : System.Web.UI.Page
     {
         public bool dni { get; set; }
-
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Session["VoucherActivo"] == null)
+                {
+                    Response.Redirect("IngresarVoucher.aspx", false);
+                }
+            }
             dni = false;
         }
 
@@ -33,35 +39,41 @@ namespace tp_web_equipo_4a
                 cliente.Direccion = txtDireccion.Text;
                 cliente.Ciudad = txtCiudad.Text;
                 cliente.CP = int.Parse(txtCp.Text);
-
-                //si es nuevo lo agregamos a la BD
-                clienteNegocio = new ClienteNegocio();
                 cliente.Id = clienteNegocio.agregar(cliente);
             }
-
-            if (Session["voucherId"] == null || Request.QueryString["idArticulo"] == null)
+            //LA SIGUIENTE LINEA DABA UN BOOL INCORRECTO
+            //MANEJADO EN ElegirPremio.aspx.cs ---> btnEjemplo_Click E IngresarDatos.aspx.cs ---> btnParticipar_Click
+            if (Session["VoucherActivo"] == null)
             {
-                Session.Add("error", "Error, intente nuevamente");
-                Response.Redirect("Error.aspx");
+                Session.Add("error", "Hubo un Error, intente nuevamente");
+                Response.Redirect("Error.aspx", false);
                 return;
             }
 
-            Vouchers voucher = new Vouchers();
-            voucher.CodigoVoucher = Session["voucherId"].ToString();
+            Vouchers voucher = (Vouchers)Session["VoucherActivo"];
             voucher.IdCliente = cliente.Id;
             voucher.FechaCanje = DateTime.Now;
-            voucher.IdArticulo = int.Parse(Request.QueryString["idArticulo"].ToString());
+            // Valor por defecto: 1
+            voucher.IdArticulo = int.Parse(Request.QueryString["idArticulo"]?.ToString() ?? "1");
 
             VoucherNegocio voucherNegocio = new VoucherNegocio();
-            voucherNegocio.canjear(voucher);
-
+            try
+            {
+                voucherNegocio.canjear(voucher);
+                Response.Redirect("CanjeoExitoso.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
+            }
         }
 
         protected void btnBuscarDni_Click(object sender, EventArgs e)
         {
             if (txtDNI.Enabled == false)
             {
-                Response.Redirect("IngresarDatos.aspx");
+                Response.Redirect("IngresarDatos.aspx", false);
                 return;
             }
 

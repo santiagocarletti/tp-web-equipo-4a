@@ -72,6 +72,8 @@
                         </div>
                     </div>
 <%
+    //AL CARGAR CLIENTE NUEVO PARA CANJEAR VOUCHER, EL SIG. IF NO SE MANTENIA EN TRUE
+    //MANEJADO EN ElegirPremio.aspx.cs ---> btnEjemplo_Click E IngresarDatos.aspx.cs ---> btnParticipar_Click
     if (dni)
     {%>
                     <div class="mb-3">

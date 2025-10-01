@@ -10,14 +10,22 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form2" runat="server">
+
+            <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Promo Ganá!</span>
+      </div>
+    </nav>
+        
         <div class="container mt-5 text-center">
+
+            <asp:Label   text="Error:"  runat="server"  CssClass="active" />
             <div class="alert alert-danger" role="alert">
-                <asp:Label ID="lblMensajeError" runat="server" Text="El código ingresado no es válido o ya ha sido utilizado." />
+                <asp:label text="Error" id="lblMensajeError" runat="server" />
             </div>
             <asp:Button ID="btnInicio" runat="server" Text="Volver al inicio" CssClass="btn btn-primary" OnClick="btnInicio_Click" />
         </div>
-    </form>
     </form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
