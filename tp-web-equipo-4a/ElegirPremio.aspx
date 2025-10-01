@@ -47,7 +47,7 @@
                                 <p class="card-text"><%#Eval("Descripcion")%></p>
                             </div>
                         </div>
-                        <asp:Button Text="Quiero este!" CssClass="btn btn-primary" runat="server" ID="btnEjemplo" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="btnEjemplo_Click" />
+                        <asp:Button Text='<%# Container.ItemIndex == 0 ? "Quiero este!" : (Container.ItemIndex == 1 ? "No, este!" : "Mejor este!") %>' CssClass="btn btn-primary" runat="server" ID="btnEjemplo" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="btnEjemplo_Click" />
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
