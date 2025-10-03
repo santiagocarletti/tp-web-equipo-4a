@@ -67,6 +67,23 @@ namespace tp_web_equipo_4a
                 Session.Add("error", ex.Message);
                 Response.Redirect("Error.aspx", false);
             }
+
+            EmailService emailService = new EmailService();
+            emailService.armarCorreo(txtEmail.Text, "Canje exitoso - ¡Gracias por tu participacion!", "<h1 style='text-align:center;'> ¡Gracias por realizar el canje del voucher! </h1>" +
+            "<p> La elección del producto es ideal para vos. Esperamos encontrarte nuevamente. </p>");
+
+            try
+            {
+                emailService.enviarEmail();
+
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex);
+                throw;
+            }
+
         }
 
         protected void btnBuscarDni_Click(object sender, EventArgs e)

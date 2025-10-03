@@ -21,7 +21,7 @@ namespace tp_web_equipo_4a
                 else
                 {
                     Vouchers voucher = (Vouchers)Session["VoucherActivo"];
-                    lblMensaje.Text = "El canjeo del voucher " + voucher.CodigoVoucher + " fue exitoso.";
+                    lblMensaje.Text = "El canjeo del voucher " + voucher.CodigoVoucher + " fue exitoso. Recibirás un email de confirmación.";
                     Session.Clear();
                 }
             }

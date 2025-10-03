@@ -124,7 +124,7 @@
                             ControlToValidate="txtDireccion"
                             ErrorMessage="Dirección Inválida (Mínimo 3 caracteres)"
                             runat="server"
-                            ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]{3,}$"
+                            ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s.]{3,}$"
                             ForeColor="red"
                             Display="Dynamic"
                             ValidationGroup="registro" />

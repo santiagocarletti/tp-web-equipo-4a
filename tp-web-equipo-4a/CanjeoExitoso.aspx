@@ -20,7 +20,7 @@
 
         <div class="container mt-5 text-center">
                 <div class="alert alert-success" role="alert">
-                <asp:Label ID="lblMensaje" runat="server" Text="El código fue canjeado exitosamente" />
+                <asp:Label ID="lblMensaje" runat="server" Text="El código fue canjeado exitosamente." />
             </div>
             <asp:Button ID="btnInicio" runat="server" Text="Volver al inicio" CssClass="btn btn-primary" OnClick="btnInicio_Click" />
         </div>
