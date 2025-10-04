@@ -12,6 +12,12 @@
 
 <script>
     function validarCheckbox() {
+        if (typeof (Page_ClientValidate) == 'function') {
+            if (!Page_ClientValidate('registro')) {
+                return false;
+            }
+        }
+
         var checkbox = document.getElementById('checkbox');
         var errorSpan = document.getElementById('checkboxError');
 
@@ -19,13 +25,14 @@
             errorSpan.style.display = 'inline';
             return false;
         }
+
         errorSpan.style.display = 'none';
         return true;
     }
 </script>
 
 <body>
-        <form id="form1" runat="server">
+    <form id="form1" runat="server">
         <nav class="navbar navbar-dark bg-dark">
             <div class="container-fluid">
                 <span class="navbar-brand mb-0 h1">Promo Ganá!</span>
@@ -80,9 +87,9 @@
                         <label for="txtNombre" class="form-label">Nombre</label>
                         <asp:RegularExpressionValidator
                             ControlToValidate="txtNombre"
-                            ErrorMessage=" Campo Inválido (Solo letras, mínimo 3)"
+                            ErrorMessage=" Campo Inválido (Solo letras, 3 a 50 caracteres)"
                             runat="server"
-                            ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,}$"
+                            ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$"
                             ForeColor="Red"
                             Display="Dynamic"
                             ValidationGroup="registro" />
@@ -93,9 +100,9 @@
                         <label for="txtApellido" class="form-label">Apellido</label>
                         <asp:RegularExpressionValidator
                             ControlToValidate="txtApellido"
-                            ErrorMessage=" Campo Inválido (Solo letras, mínimo 3)"
+                            ErrorMessage=" Campo Inválido (Solo letras, 3 a 50 caracteres)"
                             runat="server"
-                            ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,}$"
+                            ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$"
                             ForeColor="Red"
                             Display="Dynamic"
                             ValidationGroup="registro" />
@@ -108,7 +115,7 @@
                             ControlToValidate="txtEmail"
                             ErrorMessage="Correo electrónico inválido"
                             runat="server"
-                            ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                            ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,50}$"
                             ForeColor="red"
                             Display="Dynamic"
                             ValidationGroup="registro" />
@@ -122,14 +129,13 @@
                         <label for="txtDireccion" class="form-label">Dirección</label>
                         <asp:RegularExpressionValidator
                             ControlToValidate="txtDireccion"
-                            ErrorMessage="Dirección Inválida (Mínimo 3 caracteres)"
+                            ErrorMessage="Dirección Inválida (3 a 50 caracteress)"
                             runat="server"
-                            ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s.]{3,}$"
+                            ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s.]{3,50}$"
                             ForeColor="red"
                             Display="Dynamic"
                             ValidationGroup="registro" />
                         <div class="input-group">
-                            <div class="input-group-text">@</div>
                             <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control" placeholder="Calle" required="1" />
                         </div>
                     </div>
@@ -138,9 +144,9 @@
                         <label for="txtCiudad" class="form-label">Ciudad</label>
                         <asp:RegularExpressionValidator
                             ControlToValidate="txtCiudad"
-                            ErrorMessage=" Campo Inválido (mínimo 3 caracteres)"
+                            ErrorMessage=" Campo Inválido (Solo letras, 3 a 50 caracteres)"
                             runat="server"
-                            ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]{3,}$"
+                            ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$"
                             ForeColor="Red"
                             Display="Dynamic"
                             ValidationGroup="registro" />
