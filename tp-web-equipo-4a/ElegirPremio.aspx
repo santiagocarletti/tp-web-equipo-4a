@@ -54,5 +54,10 @@
             </asp:Repeater>
         </div>
     </form>
+    <style>
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            filter: invert(0.5);
+        }
+    </style>
 </body>
 </html>
